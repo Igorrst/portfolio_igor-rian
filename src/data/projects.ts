@@ -1,0 +1,78 @@
+import type { Project } from "@/types";
+
+export const projects: Project[] = [
+  {
+    id: "cloudy",
+    title: "Cloudy",
+    description: "Rede social com autenticação, perfis, temas dia/noite e moderação de comentários via IA.",
+    longDescription:
+      "Plataforma social full-stack com fluxo completo de autenticação (cadastro, login, perfil), sistema de avatares, comentários com detecção de toxicidade via Google Perspective API, curtidas e alternância dinâmica entre tema dia e noite.",
+    tech: ["React", "TypeScript", "Styled Components", "Zustand", "React Router", "Perspective API"],
+    category: "fullstack",
+    status: "production",
+    githubUrl: "https://github.com/Igorrst/Cloudy",
+    liveUrl: "https://cloudy-beige.vercel.app/",
+    image: "https://image.thum.io/get/width/1200/crop/630/noanimate/https://cloudy-beige.vercel.app/",
+    imageAlt: "Tela inicial do Cloudy com fundo de céu e formulário de cadastro",
+    featured: true,
+  },
+  {
+    id: "speeches",
+    title: "Speeches",
+    description: "Plataforma de aprendizado de inglês com tutor de IA, módulos por cenário e feedback instantâneo.",
+    longDescription:
+      "Aplicação de conversação em inglês com tutor de IA disponível 24/7, sessões de 10, 20 ou 30 minutos, quatro módulos temáticos (cotidiano, viagens, profissional e avançado), seleção de sotaque (americano, britânico ou australiano) e painel de progresso adaptativo.",
+    tech: ["React", "TypeScript", "Vite"],
+    category: "frontend",
+    status: "production",
+    githubUrl: "https://github.com/Igorrst/Speeches",
+    liveUrl: "https://speeches-ebon.vercel.app/",
+    image: "https://image.thum.io/get/width/1200/crop/630/noanimate/https://speeches-ebon.vercel.app/",
+    imageAlt: "Landing page do Speeches com chamada para ação e módulos de prática",
+    featured: true,
+  },
+  {
+    id: "devflix",
+    title: "DevFlix",
+    description: "Catálogo de filmes estilo Netflix com busca, detalhes e trailer integrado via TMDB API.",
+    longDescription:
+      "Aplicação de catálogo cinematográfico consumindo a API do TMDB, com página inicial, busca por título, página de detalhes com poster, gêneros, duração, nota e modal de trailer, além de alternância entre tema claro e escuro.",
+    tech: ["React", "JavaScript", "Styled Components", "TMDB API", "React Router"],
+    category: "frontend",
+    status: "production",
+    githubUrl: "https://github.com/Igorrst/DevFlix",
+    liveUrl: "https://dev-flix-kappa.vercel.app/",
+    image: "https://image.thum.io/get/width/1200/crop/630/noanimate/https://dev-flix-kappa.vercel.app/",
+    imageAlt: "Página inicial do DevFlix com grid de filmes em destaque",
+    featured: false,
+  },
+  {
+    id: "core-crash",
+    title: "Core Crash",
+    description: "Jogo de arena multiplayer no browser com salas públicas e privadas, customização e power-ups.",
+    longDescription:
+      "Jogo de combate em tempo real no navegador com salas públicas e privadas com senha, seleção de skins, mecânicas de movimento (WASD), dash, bombas e power-ups. Suporte a modo criativo com código de sala personalizado.",
+    tech: ["React", "JavaScript", "Vite", "WebSockets"],
+    category: "fullstack",
+    status: "production",
+    liveUrl: "https://core-crash.vercel.app/",
+    image: "https://image.thum.io/get/width/1200/crop/630/noanimate/https://core-crash.vercel.app/",
+    imageAlt: "Tela de lobby do Core Crash com opções de sala e personagens",
+    featured: true,
+  },
+  {
+    id: "burger-boss",
+    title: "Burger Boss",
+    description: "Cardápio interativo de hamburgueria com carrinho de compras e gerenciamento de pedidos.",
+    longDescription:
+      "Aplicação de pedidos com menu dividido em lanches e bebidas, carrinho persistente gerenciado com Zustand, adição e remoção de itens, resumo do pedido e interface responsiva com CSS Modules.",
+    tech: ["React", "JavaScript", "CSS Modules", "Zustand", "Vite"],
+    category: "frontend",
+    status: "production",
+    githubUrl: "https://github.com/Igorrst/Burger-Boss",
+    liveUrl: "https://burger-boss-six.vercel.app/",
+    image: "https://image.thum.io/get/width/1200/crop/630/noanimate/https://burger-boss-six.vercel.app/",
+    imageAlt: "Cardápio do Burger Boss com lanches, bebidas e carrinho lateral",
+    featured: false,
+  },
+];
