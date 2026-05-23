@@ -25,7 +25,6 @@ export const projects: Project[] = [
     tech: ["React", "TypeScript", "Vite"],
     category: "frontend",
     status: "production",
-    githubUrl: "https://github.com/Igorrst/Speeches",
     liveUrl: "https://speeches-ebon.vercel.app/",
     image: "https://image.thum.io/get/width/1200/crop/630/noanimate/https://speeches-ebon.vercel.app/",
     imageAlt: "Landing page do Speeches com chamada para ação e módulos de prática",

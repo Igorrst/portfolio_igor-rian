@@ -10,7 +10,7 @@ import type { ComponentType } from "react";
 
 type SocialItem = { href: string; label: string; icon: ComponentType<SocialIconProps> };
 
-const roles = ["Desenvolvedor Front-End", "Especialista em React", "UI Engineer"];
+const roles = ["Desenvolvedor Front-End", "Desenvolvedor React & Next.js"];
 
 const socials: SocialItem[] = [
   { href: "https://github.com/Igorrst", label: "GitHub", icon: GithubIcon },
