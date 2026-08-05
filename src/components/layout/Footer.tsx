@@ -10,7 +10,11 @@ type SocialItem = { href: string; label: string; icon: ComponentType<SocialIconP
 const socials: SocialItem[] = [
   { href: "https://github.com/Igorrst", label: "GitHub", icon: GithubIcon },
   { href: "https://www.linkedin.com/in/igorrian/", label: "LinkedIn", icon: LinkedinIcon },
-  { href: "mailto:igorrian.cntgm18@gmail.com", label: "E-mail", icon: MailIcon },
+  {
+    href: "https://mail.google.com/mail/?view=cm&fs=1&to=igorrian.cntgm18@gmail.com",
+    label: "Enviar e-mail",
+    icon: MailIcon,
+  },
 ];
 
 export function Footer() {
@@ -24,7 +28,7 @@ export function Footer() {
             <motion.a
               key={label}
               href={href}
-              target={href.startsWith("mailto") ? undefined : "_blank"}
+              target="_blank"
               rel="noopener noreferrer"
               aria-label={label}
               whileHover={{ y: -2 }}
