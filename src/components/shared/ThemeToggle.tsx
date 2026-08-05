@@ -2,7 +2,6 @@
 
 import { useTheme } from "next-themes";
 import { Sun, Moon } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 interface ThemeToggleProps {
@@ -10,13 +9,12 @@ interface ThemeToggleProps {
 }
 
 export function ThemeToggle({ className }: ThemeToggleProps) {
-  const { theme, setTheme } = useTheme();
-  const isDark = theme === "dark";
+  const { resolvedTheme, setTheme } = useTheme();
 
   return (
     <button
-      onClick={() => setTheme(isDark ? "light" : "dark")}
-      aria-label={isDark ? "Ativar tema claro" : "Ativar tema escuro"}
+      onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
+      aria-label="Alternar tema"
       className={cn(
         "relative w-9 h-9 flex items-center justify-center rounded-full",
         "border border-border text-muted-foreground",
@@ -24,29 +22,18 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
         className
       )}
     >
-      <AnimatePresence mode="wait" initial={false}>
-        {isDark ? (
-          <motion.span
-            key="sun"
-            initial={{ rotate: -90, opacity: 0 }}
-            animate={{ rotate: 0, opacity: 1 }}
-            exit={{ rotate: 90, opacity: 0 }}
-            transition={{ duration: 0.25 }}
-          >
-            <Sun size={16} strokeWidth={1.5} />
-          </motion.span>
-        ) : (
-          <motion.span
-            key="moon"
-            initial={{ rotate: 90, opacity: 0 }}
-            animate={{ rotate: 0, opacity: 1 }}
-            exit={{ rotate: -90, opacity: 0 }}
-            transition={{ duration: 0.25 }}
-          >
-            <Moon size={16} strokeWidth={1.5} />
-          </motion.span>
-        )}
-      </AnimatePresence>
+      <span className="relative h-4 w-4" aria-hidden="true">
+        <Sun
+          size={16}
+          strokeWidth={1.5}
+          className="absolute inset-0 scale-0 rotate-90 opacity-0 transition-all duration-300 dark:scale-100 dark:rotate-0 dark:opacity-100"
+        />
+        <Moon
+          size={16}
+          strokeWidth={1.5}
+          className="absolute inset-0 scale-100 rotate-0 opacity-100 transition-all duration-300 dark:scale-0 dark:-rotate-90 dark:opacity-0"
+        />
+      </span>
     </button>
   );
 }

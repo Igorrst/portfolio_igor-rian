@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import { AnimatedText } from "@/components/shared/AnimatedText";
@@ -10,45 +9,17 @@ import type { ComponentType } from "react";
 
 type SocialItem = { href: string; label: string; icon: ComponentType<SocialIconProps> };
 
-const roles = ["Desenvolvedor Front-End", "Desenvolvedor React & Next.js"];
-
 const socials: SocialItem[] = [
   { href: "https://github.com/Igorrst", label: "GitHub", icon: GithubIcon },
   { href: "https://www.linkedin.com/in/igorrian/", label: "LinkedIn", icon: LinkedinIcon },
-  { href: "mailto:igorrian.cntgm18@gmail.com", label: "E-mail", icon: MailIcon },
+  {
+    href: "https://mail.google.com/mail/?view=cm&fs=1&to=igorrian.cntgm18@gmail.com",
+    label: "Enviar e-mail",
+    icon: MailIcon,
+  },
 ];
 
 export function Hero() {
-  const [roleIndex, setRoleIndex] = useState(0);
-  const [displayedRole, setDisplayedRole] = useState("");
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [charIndex, setCharIndex] = useState(0);
-
-  useEffect(() => {
-    const currentRole = roles[roleIndex];
-    let timeout: ReturnType<typeof setTimeout>;
-
-    if (!isDeleting && charIndex <= currentRole.length) {
-      timeout = setTimeout(() => {
-        setDisplayedRole(currentRole.slice(0, charIndex));
-        setCharIndex((c) => c + 1);
-      }, 80);
-    } else if (isDeleting && charIndex >= 0) {
-      timeout = setTimeout(() => {
-        setDisplayedRole(currentRole.slice(0, charIndex));
-        setCharIndex((c) => c - 1);
-      }, 40);
-    } else if (!isDeleting && charIndex > currentRole.length) {
-      timeout = setTimeout(() => setIsDeleting(true), 2200);
-    } else if (isDeleting && charIndex < 0) {
-      setIsDeleting(false);
-      setCharIndex(0);
-      setRoleIndex((i) => (i + 1) % roles.length);
-    }
-
-    return () => clearTimeout(timeout);
-  }, [charIndex, isDeleting, roleIndex]);
-
   return (
     <section className="relative min-h-screen flex items-center justify-center px-6 pt-24 pb-16">
       <div className="max-w-4xl mx-auto text-center">
@@ -68,14 +39,45 @@ export function Hero() {
         </h1>
 
         <div className="h-10 md:h-12 flex items-center justify-center mb-8">
-          <p className="font-display text-xl md:text-2xl text-accent italic">
-            {displayedRole}
-            <motion.span
-              animate={{ opacity: [1, 0] }}
-              transition={{ duration: 0.5, repeat: Infinity, repeatType: "reverse" }}
-              className="inline-block w-0.5 h-6 md:h-7 bg-accent ml-0.5 align-middle"
-            />
-          </p>
+          <motion.div
+            initial={{ opacity: 0, y: 16, scale: 0.94, filter: "blur(8px)" }}
+            animate={{
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              filter: "blur(0px)",
+            }}
+            transition={{
+              duration: 0.7,
+              delay: 0.4,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+            className="inline-flex flex-col"
+          >
+            <motion.p
+              animate={{
+                backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+                textShadow: [
+                  "0 0 0px transparent",
+                  "0 0 18px color-mix(in srgb, var(--accent) 45%, transparent)",
+                  "0 0 0px transparent",
+                ],
+              }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              whileHover={{ scale: 1.04 }}
+              className="bg-linear-to-r from-accent via-foreground to-accent bg-size-[200%_100%] bg-clip-text font-display text-xl md:text-2xl italic text-transparent"
+            >
+              Desenvolvedor Full-Stack
+            </motion.p>
+
+            <span className="relative mt-1 h-px overflow-hidden bg-accent/20" aria-hidden="true">
+              <motion.span
+                animate={{ x: ["-120%", "220%"] }}
+                transition={{ duration: 2.2, repeat: Infinity, repeatDelay: 0.5, ease: "easeInOut" }}
+                className="absolute inset-y-0 left-0 w-1/2 bg-linear-to-r from-transparent via-accent to-transparent shadow-[0_0_10px_var(--accent)]"
+              />
+            </span>
+          </motion.div>
         </div>
 
         <motion.p
@@ -115,7 +117,7 @@ export function Hero() {
               <a
                 key={label}
                 href={href}
-                target={href.startsWith("mailto") ? undefined : "_blank"}
+                target="_blank"
                 rel="noopener noreferrer"
                 aria-label={label}
                 className="w-10 h-10 flex items-center justify-center border border-border text-muted-foreground hover:border-accent hover:text-accent transition-all duration-300"
