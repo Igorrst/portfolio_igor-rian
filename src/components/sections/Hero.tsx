@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import { AnimatedText } from "@/components/shared/AnimatedText";
+import { StreakBackground } from "@/components/shared/StreakBackground";
 import { GithubIcon, LinkedinIcon, MailIcon } from "@/components/shared/SocialIcons";
 import type { SocialIconProps } from "@/components/shared/SocialIcons";
 import type { ComponentType } from "react";
@@ -21,8 +22,10 @@ const socials: SocialItem[] = [
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-6 pt-24 pb-16">
-      <div className="max-w-4xl mx-auto text-center">
+    <section id="inicio" className="relative isolate min-h-screen overflow-hidden flex items-center justify-center px-6 pt-24 pb-16">
+      <StreakBackground />
+
+      <div className="relative z-10 max-w-4xl mx-auto text-center">
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -86,8 +89,8 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.8 }}
           className="text-muted-foreground text-base md:text-lg max-w-xl mx-auto leading-relaxed mb-10"
         >
-          Construo interfaces que unem performance e elegância — experiências digitais
-          que as pessoas amam usar.
+          Desenvolvo aplicações web completas, unindo interfaces com React e Next.js a APIs,
+          serviços em Node.js e bancos de dados PostgreSQL.
         </motion.p>
 
         <motion.div
@@ -145,7 +148,7 @@ export function Hero() {
       </div>
 
       <div
-        className="absolute inset-0 -z-10 pointer-events-none"
+        className="absolute inset-0 z-0 pointer-events-none"
         aria-hidden="true"
       >
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-accent/5 blur-[120px]" />
