@@ -23,15 +23,25 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Igor Rian — Desenvolvedor Front-End",
+  title: "Igor Rian — Desenvolvedor Full Stack",
   description:
-    "Portfólio de Igor Rian, desenvolvedor front-end especializado em React, Next.js e TypeScript.",
-  keywords: ["front-end", "desenvolvedor", "React", "Next.js", "TypeScript", "portfólio"],
+    "Portfólio de Igor Rian, desenvolvedor Full Stack com experiência em React, Next.js, TypeScript, Node.js e PostgreSQL.",
+  keywords: [
+    "full stack",
+    "front-end",
+    "desenvolvedor",
+    "React",
+    "Next.js",
+    "TypeScript",
+    "Node.js",
+    "PostgreSQL",
+    "portfólio",
+  ],
   authors: [{ name: "Igor Rian" }],
   openGraph: {
-    title: "Igor Rian — Desenvolvedor Front-End",
+    title: "Igor Rian — Desenvolvedor Full Stack",
     description:
-      "Portfólio de Igor Rian, desenvolvedor front-end especializado em React, Next.js e TypeScript.",
+      "Portfólio de Igor Rian, desenvolvedor Full Stack com experiência em React, Next.js, TypeScript, Node.js e PostgreSQL.",
     type: "website",
   },
 };

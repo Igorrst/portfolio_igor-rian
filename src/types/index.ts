@@ -31,4 +31,10 @@ export interface Skill {
 export type ProjectCategory = "frontend" | "backend" | "fullstack" | "mobile";
 export type ProjectStatus = "production" | "open-source" | "archived" | "wip";
 export type ExperienceType = "work" | "freelance" | "education";
-export type SkillCategory = "language" | "framework" | "tool" | "database";
+export type SkillCategory =
+  | "language"
+  | "frontend"
+  | "backend"
+  | "database"
+  | "quality"
+  | "tool";

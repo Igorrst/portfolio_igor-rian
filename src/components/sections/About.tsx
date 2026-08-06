@@ -9,17 +9,26 @@ import type { SkillCategory } from "@/types";
 
 const categoryLabel: Record<SkillCategory, string> = {
   language: "Linguagens",
-  framework: "Frameworks & Libs",
-  tool: "Ferramentas",
+  frontend: "Front-End",
+  backend: "Back-End & APIs",
   database: "Banco de Dados",
+  quality: "Testes & Qualidade",
+  tool: "Ferramentas",
 };
 
-const categoryOrder: SkillCategory[] = ["language", "framework", "tool", "database"];
+const categoryOrder: SkillCategory[] = [
+  "language",
+  "frontend",
+  "backend",
+  "database",
+  "quality",
+  "tool",
+];
 
 const paragraphs = [
-  "Sou um desenvolvedor front-end apaixonado por criar interfaces que combinam beleza e funcionalidade. Meu foco está em React e Next.js, com TypeScript como padrão para qualquer projeto sério.",
-  "Acredito que bom código é como boa arquitetura: a estrutura deve ser sólida, a experiência deve parecer natural e os detalhes fazem toda a diferença. Cada projeto é uma oportunidade de resolver problemas reais com elegância.",
-  "Quando não estou codando, estou estudando design, explorando novas tecnologias ou contribuindo para projetos open-source.",
+  "Sou desenvolvedor Full Stack com experiência profissional em front-end, atuando em sistemas web para hotéis e reservas. Trabalho com React, Next.js, TypeScript e Tailwind CSS, integrando interfaces a APIs REST e arquiteturas BFF.",
+  "Minha experiência envolve desenvolvimento de funcionalidades, componentização, testes unitários, homologação, pipelines e colaboração com QA em ambientes com múltiplos repositórios.",
+  "Também desenvolvo conhecimentos em Node.js, Express.js, SQL e PostgreSQL. Minha trajetória anterior em operações fortaleceu minha visão sobre processos, regras de negócio, dados e necessidades reais dos usuários.",
 ];
 
 function SkillBadge({ name, delay }: { name: string; delay: number }) {
@@ -56,13 +65,11 @@ export function About() {
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-120px" });
 
-  const grouped = categoryOrder.map((cat) => ({
-    category: cat,
-    label: categoryLabel[cat],
-    items: skills.filter((s) => s.category === cat),
+  const grouped = categoryOrder.map((category) => ({
+    category,
+    label: categoryLabel[category],
+    items: skills.filter((skill) => skill.category === category),
   }));
-
-  let globalBadgeIndex = 0;
 
   return (
     <section id="sobre" ref={sectionRef} className="py-28 px-6 overflow-hidden">
@@ -86,44 +93,13 @@ export function About() {
               </motion.p>
             ))}
 
-            <motion.div
-              initial={{ opacity: 0, scaleX: 0 }}
-              animate={isInView ? { opacity: 1, scaleX: 1 } : {}}
-              transition={{ duration: 0.6, delay: 0.75, ease: "easeOut" }}
-              style={{ originX: 0 }}
-              className="mt-8 pt-8 border-t border-border"
-            >
-              <motion.a
-                href="mailto:igorrian.cntgm18@gmail.com"
-                className="group inline-flex items-center gap-2 font-code text-sm text-accent tracking-wider relative"
-                whileHover="hover"
-              >
-                <motion.span
-                  variants={{ hover: { x: -3 } }}
-                  transition={{ duration: 0.2 }}
-                >
-                  igorrian.cntgm18@gmail.com
-                </motion.span>
-                <motion.span
-                  variants={{ hover: { x: 5 } }}
-                  transition={{ duration: 0.2 }}
-                >
-                  →
-                </motion.span>
-                <motion.span
-                  className="absolute -bottom-0.5 left-0 h-px bg-accent"
-                  initial={{ width: 0 }}
-                  variants={{ hover: { width: "100%" } }}
-                  transition={{ duration: 0.3 }}
-                />
-              </motion.a>
-            </motion.div>
           </div>
 
           <div className="space-y-7">
             {grouped.map(({ category, label, items }, groupIndex) => {
-              const groupStart = globalBadgeIndex;
-              globalBadgeIndex += items.length;
+              const groupStart = grouped
+                .slice(0, groupIndex)
+                .reduce((total, group) => total + group.items.length, 0);
 
               return (
                 <div key={category}>
